@@ -22,13 +22,17 @@ def clear_session():
 
 @app.route('/articles')
 def index_articles():
+    articles = Article.query.all()
+    return jsonify([article.to_dict() for article in articles])
+    
 
-    pass
-
-@app.route('/articles/<int:id>')
+@app.route('/articles/<int:id>', methods=['GET'])
 def show_article(id):
-
     pass
+
+
+
+
 
 if __name__ == '__main__':
     app.run(port=5555)
